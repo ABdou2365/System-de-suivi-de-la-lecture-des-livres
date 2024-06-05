@@ -25,6 +25,7 @@ public class User {
 
     public void readBook(Book book, Scanner scanner) {
         System.out.println("Reading " + book.getTitle() + "...");
+        book.setCurrentPage(0);
         System.out.println("Press 'n' to read the next page or any other key to stop.");
 
         while (scanner.hasNext()) {
@@ -32,17 +33,13 @@ public class User {
             if (input.equals("n")) {
                 book.nextPage();
             } else {
-                System.out.println("Stopped reading " + book.getTitle() + ".");
+                System.out.println("la lecture de livre " + book.getTitle() + " est arreté a la page " + book.getCurrentPage() + " .");
                 break;
             }
         }
     }
 
 
-    public void stopReading(Book book) {
-        // Assume that the User stops reading at the current page
-        System.out.println("Arrêté de lire " + book.getTitle() + " à la page " + book.getCurrentPage());
-    }
 
     public void resumeReading(Book book, Scanner scanner) {
         // Assume that the User resumes reading from the last read page
@@ -55,7 +52,7 @@ public class User {
             if (input.equals("n")) {
                 book.nextPage();
             } else {
-                System.out.println("Stopped reading " + book.getTitle() + ".");
+                System.out.println("la lecture de livre " + book.getTitle() + " est arreté a la page " + book.getCurrentPage() + " .");
                 break;
             }
         }

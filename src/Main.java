@@ -17,11 +17,10 @@ public class Main {
 
 
         while (true) {
-            System.out.println("0. afficher les livres disponible");
-            System.out.println("1. Ajouter un livre");
-            System.out.println("2. Supprimer un livre");
-            System.out.println("3. Lire un livre");
-            System.out.println("4. Arrêter la lecture");
+            System.out.println("1. afficher les livres disponible");
+            System.out.println("2. Ajouter un livre");
+            System.out.println("3. Supprimer un livre");
+            System.out.println("4. Lire un livre");
             System.out.println("5. Reprendre la lecture");
             System.out.println("6. Quitter");
 
@@ -30,7 +29,7 @@ public class Main {
             scanner.nextLine(); // Pour consommer la nouvelle ligne après nextInt()
 
             switch (option) {
-                case 0:
+                case 1:
                     for (Book book : user.getBooks()) {
                         System.out.println(book.getTitle() +" - de " +
                                 book.getAuthor() + " - " +
@@ -58,7 +57,7 @@ public class Main {
                     }
                     break;
 
-                case 1:
+                case 2:
                     System.out.print("Titre du livre vous ajouterez: ");
                     String title = scanner.nextLine();
                     System.out.print("Auteur du livre : ");
@@ -70,7 +69,7 @@ public class Main {
                     user.addBook(book);
                     System.out.println("Livre ajouté avec succès !");
                     break;
-                case 2:
+                case 3:
                     System.out.print("Titre du livre à supprimer : ");
                     String bookTitle = scanner.nextLine();
                     Book bookToRemove = null;
@@ -87,7 +86,7 @@ public class Main {
                         System.out.println("Livre non trouvé.");
                     }
                     break;
-                case 3:
+                case 4:
                     System.out.print("Titre du livre à lire : ");
                     String bookTitleToRead = scanner.nextLine();
                     Book bookToRead = null;
@@ -99,22 +98,6 @@ public class Main {
                     }
                     if (bookToRead != null) {
                         user.readBook(bookToRead, scanner);
-                    } else {
-                        System.out.println("Livre non trouvé.");
-                    }
-                    break;
-                case 4:
-                    System.out.print("Titre du livre à arrêter : ");
-                    String bookTitleToStop = scanner.nextLine();
-                    Book bookToStop = null;
-                    for (Book b : user.getBooks()) {
-                        if (b.getTitle().equals(bookTitleToStop)) {
-                            bookToStop = b;
-                            break;
-                        }
-                    }
-                    if (bookToStop != null) {
-                        user.stopReading(bookToStop);
                     } else {
                         System.out.println("Livre non trouvé.");
                     }
