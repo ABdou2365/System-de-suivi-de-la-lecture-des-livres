@@ -32,7 +32,9 @@ public class Main {
             switch (option) {
                 case 0:
                     for (Book book : user.getBooks()) {
-                        System.out.println(book.getTitle());
+                        System.out.println(book.getTitle() +" - de " +
+                                book.getAuthor() + " - " +
+                                book.getTotalPages() + " Page");
                     }
                     try{
                         Thread.sleep(4000);
