@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        User user = new User("Abdellah"); // Créer un utilisateur avec un nom donné
+        User user = new User("Moutawakkil"); // Créer un utilisateur avec un nom donné
         Book book1 = new Book("l'ile au trésor","Robert Louis Stevenson",207);
         Book book2 = new Book("la boîte a merveilles","ahmed SEFRIOUI",249);
         Book book3 = new Book("Antigone","Jean Anouilh",128);
@@ -53,7 +53,7 @@ public class Main {
                         case 1:
                             break;
                         case 2:
-                            System.out.println("Merci d'avoir utilisé notre système de suivi de la lecture des livres !");
+                            System.out.println("Merci d'avoir utilisé notre système de suivi de la lecture des livres, A la prochaine !");
                             return;
                     }
                     break;
@@ -98,8 +98,7 @@ public class Main {
                         }
                     }
                     if (bookToRead != null) {
-                        user.readBook(bookToRead);
-                        System.out.println("Lecture commencée.");
+                        user.readBook(bookToRead, scanner);
                     } else {
                         System.out.println("Livre non trouvé.");
                     }
@@ -131,13 +130,13 @@ public class Main {
                         }
                     }
                     if (bookToResume != null) {
-                        user.resumeReading(bookToResume);
+                        user.resumeReading(bookToResume, scanner);
                     } else {
                         System.out.println("Livre non trouvé.");
                     }
                     break;
                 case 6:
-                    System.out.println("Merci d'avoir utilisé notre système de suivi de la lecture des livres !");
+                    System.out.println("Merci d'avoir utilisé notre système de suivi de la lecture des livres, A la prochaine !");
                     return;
                 default:
                     System.out.println("Option invalide. Veuillez choisir à nouveau.");

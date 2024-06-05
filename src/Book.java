@@ -38,16 +38,18 @@ public class Book {
     public void nextPage() {
         if (currentPage < totalPages) {
             currentPage++;
+            System.out.println("Page " + currentPage + " sur " + totalPages);
         } else {
-            System.out.println("You have reached the end of the book.");
+            System.out.println("Vous avez atteint la fin du livre.");
         }
     }
 
     public void previousPage() {
         if (currentPage > 0) {
             currentPage--;
+            System.out.println("Page " + currentPage + " sur " + totalPages);
         } else {
-            System.out.println("You are already at the beginning of the book.");
+            System.out.println("Vous êtes déjà au début du livre.");
         }
     }
 }
