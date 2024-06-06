@@ -1,20 +1,9 @@
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        User user = new User("Moutawakkil"); // Créer un utilisateur avec un nom donné
-        Book book1 = new Book("l'ile au trésor","Robert Louis Stevenson",207);
-        Book book2 = new Book("la boîte a merveilles","ahmed SEFRIOUI",249);
-        Book book3 = new Book("Antigone","Jean Anouilh",128);
-
-
-        user.addBook(book1);
-        user.addBook(book2);
-        user.addBook(book3);
-
+        User user = new User("Moutawakkil");
 
         while (true) {
             System.out.println("1. afficher les livres disponible");
@@ -31,34 +20,31 @@ public class Main {
             switch (option) {
                 case 1:
                     for (Book book : user.getBooks()) {
-                        System.out.println(book.getTitle() +" - de " +
+                        System.out.println(book.getTitle() + " - de " +
                                 book.getAuthor() + " - " +
-                                book.getTotalPages() + " Page");
+                                book.getTotalPages() + " Pages");
                     }
-                    try{
+                    try {
                         Thread.sleep(4000);
                         System.out.println("");
                         System.out.println("");
-                    }catch(InterruptedException e){
+                    } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
-                    System.out.println("Est ce que vous voulez continuer ?");
+                    System.out.println("Est-ce que vous voulez continuer ?");
                     System.out.println("1. Oui");
                     System.out.println("2. Non");
 
                     int decision = scanner.nextInt();
                     scanner.nextLine();
-                    switch (decision) {
-                        case 1:
-                            break;
-                        case 2:
-                            System.out.println("Merci d'avoir utilisé notre système de suivi de la lecture des livres, A la prochaine !");
-                            return;
+                    if (decision == 2) {
+                        System.out.println("Merci d'avoir utilisé notre système de suivi de la lecture des livres, A la prochaine !");
+                        return;
                     }
                     break;
 
                 case 2:
-                    System.out.print("Titre du livre vous ajouterez: ");
+                    System.out.print("Titre du livre à ajouter: ");
                     String title = scanner.nextLine();
                     System.out.print("Auteur du livre : ");
                     String author = scanner.nextLine();
@@ -69,6 +55,7 @@ public class Main {
                     user.addBook(book);
                     System.out.println("Livre ajouté avec succès !");
                     break;
+
                 case 3:
                     System.out.print("Titre du livre à supprimer : ");
                     String bookTitle = scanner.nextLine();
@@ -86,6 +73,7 @@ public class Main {
                         System.out.println("Livre non trouvé.");
                     }
                     break;
+
                 case 4:
                     System.out.print("Titre du livre à lire : ");
                     String bookTitleToRead = scanner.nextLine();
@@ -102,6 +90,7 @@ public class Main {
                         System.out.println("Livre non trouvé.");
                     }
                     break;
+
                 case 5:
                     System.out.print("Titre du livre à reprendre : ");
                     String bookTitleToResume = scanner.nextLine();
@@ -118,9 +107,11 @@ public class Main {
                         System.out.println("Livre non trouvé.");
                     }
                     break;
+
                 case 6:
                     System.out.println("Merci d'avoir utilisé notre système de suivi de la lecture des livres, A la prochaine !");
                     return;
+
                 default:
                     System.out.println("Option invalide. Veuillez choisir à nouveau.");
             }
