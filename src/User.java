@@ -41,6 +41,7 @@ public class User {
                 break;
             }
         }
+        saveBooks();
     }
 
     public void resumeReading(Book book, Scanner scanner) {
@@ -57,6 +58,7 @@ public class User {
                 break;
             }
         }
+        saveBooks();
     }
 
     public List<Book> getBooks() {

@@ -48,14 +48,6 @@ public class Book implements Serializable {
         }
     }
 
-    public void previousPage() {
-        if (currentPage > 0) {
-            currentPage--;
-            System.out.println("Page " + currentPage + " sur " + totalPages);
-        } else {
-            System.out.println("Vous êtes déjà au début du livre.");
-        }
-    }
 }
 
 

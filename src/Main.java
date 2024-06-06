@@ -6,12 +6,13 @@ public class Main {
         User user = new User("Moutawakkil");
 
         while (true) {
+            System.out.println("");
+            System.out.println("");
             System.out.println("1. afficher les livres disponible");
             System.out.println("2. Ajouter un livre");
             System.out.println("3. Supprimer un livre");
             System.out.println("4. Lire un livre");
-            System.out.println("5. Reprendre la lecture");
-            System.out.println("6. Quitter");
+            System.out.println("5. Quitter");
 
             System.out.print("Choisissez une option : ");
             int option = scanner.nextInt();
@@ -75,6 +76,22 @@ public class Main {
                     break;
 
                 case 4:
+                    System.out.println();
+                    int number = 0;
+                    for (Book livre : user.getBooks()) {
+                        number++;
+                        if(livre.getCurrentPage() ==0){
+                            System.out.println(number + ".  " + livre.getTitle() + " - de " +
+                                    livre.getAuthor() + " - " + " Vous n'avez pas encore commencer" +
+                                    " a lire ce livre  ");
+                        }
+                        else {
+                            System.out.println(number + ".  " + livre.getTitle() + " - de " +
+                                    livre.getAuthor() + " - " + " Vous êtes arréter sur la page " +
+                                    livre.getCurrentPage());
+                        }
+                    }
+                    System.out.println("");
                     System.out.print("Titre du livre à lire : ");
                     String bookTitleToRead = scanner.nextLine();
                     Book bookToRead = null;
@@ -85,30 +102,31 @@ public class Main {
                         }
                     }
                     if (bookToRead != null) {
-                        user.readBook(bookToRead, scanner);
+
+                        if(bookToRead.getCurrentPage() ==0){
+                            System.out.println("1. Commencer la lecture");
+                        }
+                        else{
+                            System.out.println("1. reLire le livre depuis le début");
+                            System.out.println("2. Reprendre depuis votre dérnière lecture - page " + bookToRead.getCurrentPage());
+                        }
+                        System.out.println("");
+                        System.out.print("Choisissez une option : ");
+                        int opt = scanner.nextInt();
+                        scanner.nextLine(); // Pour consommer la nouvelle ligne après nextInt()
+                        switch (opt) {
+                            case 1:
+                                user.readBook(bookToRead, scanner);
+                            case 2:
+                                user.resumeReading(bookToRead, scanner);
+                        }
+
                     } else {
                         System.out.println("Livre non trouvé.");
                     }
                     break;
 
                 case 5:
-                    System.out.print("Titre du livre à reprendre : ");
-                    String bookTitleToResume = scanner.nextLine();
-                    Book bookToResume = null;
-                    for (Book b : user.getBooks()) {
-                        if (b.getTitle().equals(bookTitleToResume)) {
-                            bookToResume = b;
-                            break;
-                        }
-                    }
-                    if (bookToResume != null) {
-                        user.resumeReading(bookToResume, scanner);
-                    } else {
-                        System.out.println("Livre non trouvé.");
-                    }
-                    break;
-
-                case 6:
                     System.out.println("Merci d'avoir utilisé notre système de suivi de la lecture des livres, A la prochaine !");
                     return;
 
